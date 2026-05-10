@@ -1,5 +1,5 @@
-# robots.txt — RetroToolkit
-# https://retrotoolkit.com/robots.txt
+# robots.txt – RetroToolkit
+# https://retroaudioworld.com/robots.txt
 
 # Allow all crawlers full access
 User-agent: *
@@ -9,4 +9,4 @@ Allow: /
 Disallow: /cdn-cgi/
 
 # Sitemap location
-Sitemap: https://retrotoolkit.com/sitemap.xml
+Sitemap: https://retroaudioworld.com/sitemap.xml
