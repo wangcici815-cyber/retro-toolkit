@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ═══ SEO: tool-vhs.html ═══ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <title>Free VHS Effect Generator Online — Add Retro VHS Filter to Images | RetroToolkit</title>
+  <meta name="description" content="Free online VHS effect generator. Apply authentic scanlines, chromatic aberration, color bleed, and tracking errors to any image. Instant 90s nostalgia — no upload needed.">
+  <meta name="keywords" content="VHS effect generator online, VHS filter free, retro video effect online, VHS aesthetic filter, 90s photo filter, scanline effect generator, chromatic aberration online">
+  <link rel="canonical" href="https://retrotoolkit.com/tool-vhs.html">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Free VHS Effect Generator Online — Add Retro VHS Filter to Images | RetroToolkit">
+  <meta property="og:description" content="Free online VHS effect generator. Apply authentic scanlines, chromatic aberration, color bleed, and tracking errors to any image. Instant 90s nostalgia — no upload needed.">
+  <meta property="og:url" content="https://retrotoolkit.com/tool-vhs.html">
+  <meta property="og:site_name" content="RetroToolkit">
+  <meta property="og:image" content="https://retrotoolkit.com/og-image.png">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free VHS Effect Generator Online — Add Retro VHS Filter to Images | RetroToolkit">
+  <meta name="twitter:description" content="Free online VHS effect generator. Apply authentic scanlines, chromatic aberration, color bleed, and tracking errors to any image. Instant 90s nostalgia — no upload needed.">
+  <meta name="twitter:image" content="https://retrotoolkit.com/og-image.png">
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"VHS Effect Generator","url":"https://retrotoolkit.com/tool-vhs.html","applicationCategory":"MultimediaApplication","operatingSystem":"Web Browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free online VHS effect generator. Apply authentic scanlines, chromatic aberration, color bleed, and tracking errors to any image. Instant 90s nostalgia — no upload needed."}
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="crt-flicker">
+<script src="components.js"></script>
+<script>initComponents('tools.html');</script>
+
+<div class="page-hero" style="background:radial-gradient(ellipse 60% 80% at 80% 50%, rgba(191,95,255,0.07) 0%, transparent 70%), var(--black);">
+  <div class="container">
+    <div class="page-hero-label">// FREE TOOL — CANVAS API</div>
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;flex-wrap:wrap;">
+      <span style="font-size:3rem;">📹</span>
+      <div>
+        <h1>VHS Effect <span class="text-amber">Generator</span></h1>
+        <p class="text-dim" style="font-family:var(--font-mono);font-size:0.8rem;">
+          Apply VHS scanlines, color bleed, and chromatic aberration to any image — free, instant, local.
+        </p>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <span class="tag tag-amber">100% Free</span>
+      <span class="tag tag-green">No Upload</span>
+      <span class="tag tag-cyan">Canvas API</span>
+      <span class="tag tag-red">VHS Aesthetic</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="ad-slot ad-slot-banner">[ Advertisement · Google AdSense ]</div>
+</div>
+
+<div class="container section" style="padding-top:0;">
+  <div class="article-layout">
+    <div>
+      <div class="tool-panel">
+        <div class="tool-panel-header">
+          <div class="tool-panel-dots">
+            <span class="dot-red"></span><span class="dot-amber"></span><span class="dot-green"></span>
+          </div>
+          VHS_EFFECT_GENERATOR — READY
+        </div>
+        <div class="tool-panel-body">
+
+          <div class="section-label mb-16">Step 1 — Load Image</div>
+          <div class="file-drop" id="vhs-drop">
+            <input type="file" id="vhs-file" accept="image/*">
+            <div class="file-drop-icon">🖼️</div>
+            <p>Drop an image here, or click to browse</p>
+            <p style="margin-top:4px;font-size:0.65rem;color:var(--text-muted);">JPG, PNG, WEBP · Max 10MB · Processed locally</p>
+          </div>
+
+          <div class="grid-2" style="gap:24px;margin-bottom:24px;">
+            <!-- Preview canvas -->
+            <div>
+              <div class="section-label mb-8">Preview</div>
+              <div class="canvas-wrap" id="canvas-wrap" style="min-height:200px;background:#000;display:flex;align-items:center;justify-content:center;">
+                <canvas id="vhs-canvas" style="display:none;width:100%;"></canvas>
+                <span class="text-muted mono" style="font-size:0.75rem;" id="canvas-placeholder">No image loaded</span>
+              </div>
+            </div>
+            <!-- Controls -->
+            <div>
+              <div class="section-label mb-16">Step 2 — Adjust Effects</div>
+
+              <div class="control-group">
+                <div class="control-label">Scanline Intensity <span class="val" id="scanline-val">60%</span></div>
+                <input type="range" id="scanline" min="0" max="100" value="60">
+              </div>
+              <div class="control-group">
+                <div class="control-label">Chromatic Aberration <span class="val" id="chroma-val">40%</span></div>
+                <input type="range" id="chroma" min="0" max="100" value="40">
+              </div>
+              <div class="control-group">
+                <div class="control-label">VHS Noise / Grain <span class="val" id="noise-val">50%</span></div>
+                <input type="range" id="noise" min="0" max="100" value="50">
+              </div>
+              <div class="control-group">
+                <div class="control-label">Color Bleed <span class="val" id="bleed-val">35%</span></div>
+                <input type="range" id="bleed" min="0" max="100" value="35">
+              </div>
+              <div class="control-group">
+                <div class="control-label">Tracking Error <span class="val" id="tracking-val">20%</span></div>
+                <input type="range" id="tracking" min="0" max="100" value="20">
+              </div>
+              <div class="control-group">
+                <div class="control-label">Brightness Flicker <span class="val" id="flicker-val">15%</span></div>
+                <input type="range" id="flicker-ctrl" min="0" max="100" value="15">
+              </div>
+            </div>
+          </div>
+
+          <!-- Presets -->
+          <div class="section-label mb-8">Quick Presets</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;">
+            <button class="btn btn-sm btn-amber" onclick="applyVHSPreset('light')">Soft Vintage</button>
+            <button class="btn btn-sm btn-amber" onclick="applyVHSPreset('classic')">Classic VHS</button>
+            <button class="btn btn-sm btn-amber" onclick="applyVHSPreset('heavy')">Heavy Distortion</button>
+            <button class="btn btn-sm btn-amber" onclick="applyVHSPreset('glitch')">Glitch TV</button>
+            <button class="btn btn-sm" style="border-color:var(--border);color:var(--text-dim);" onclick="applyVHSPreset('reset')">Reset</button>
+          </div>
+
+          <!-- Extra effects -->
+          <div class="section-label mb-8">Extra Effects</div>
+          <div class="checkbox-group mb-24">
+            <label class="checkbox-item">
+              <input type="checkbox" id="eff-timestamp" checked>
+              <span class="checkbox-box">✓</span>
+              <span class="checkbox-label">VHS Timestamp</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" id="eff-letterbox">
+              <span class="checkbox-box"></span>
+              <span class="checkbox-label">Letterbox Bars</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" id="eff-recdot" checked>
+              <span class="checkbox-box">✓</span>
+              <span class="checkbox-label">REC Indicator</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" id="eff-vignette" checked>
+              <span class="checkbox-box">✓</span>
+              <span class="checkbox-label">Vignette</span>
+            </label>
+          </div>
+
+          <div class="section-label mb-16">Step 3 — Apply &amp; Export</div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <button class="btn btn-solid-amber" onclick="applyVHS()">✦ Apply VHS Effect</button>
+            <button class="btn btn-green" onclick="exportImage()">↓ Download PNG</button>
+          </div>
+
+          <div id="vhs-status" class="terminal mt-16" style="font-size:0.72rem;padding:10px 14px;display:none;">
+            <span class="prompt">&gt;</span> <span id="vhs-status-msg" class="text-green"></span>
+          </div>
+
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="card mt-24">
+        <div class="section-label mb-8">Culture &amp; History</div>
+        <h2 style="font-size:1.1rem;margin-bottom:12px;">VHS Aesthetic &amp; 90s Visual Culture Explained</h2>
+        <p style="font-size:0.9rem;">The "imperfections" of VHS — scanlines, color bleed, tracking errors — are now deliberate aesthetic choices. What was once considered technical failure has become a visual language of authenticity, nostalgia, and anti-corporate rebellion.</p>
+        <a href="article-vhs.html" class="btn btn-amber mt-16" style="display:inline-flex;">Read Full Article →</a>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="article-sidebar">
+      <div class="ad-slot ad-slot-box mb-24">[ AdSense · 300×250 ]</div>
+      <div class="card mb-24">
+        <div class="section-label mb-12">Other Free Tools</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <a href="tool-tape.html" class="btn btn-amber w-full" style="justify-content:center;">📼 Tape Simulator</a>
+          <a href="tool-8bit.html" class="btn btn-green w-full" style="justify-content:center;">🎮 8-Bit Converter</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="section-label mb-12">VHS Effect Guide</div>
+        <div class="terminal" style="font-size:0.68rem;padding:12px;">
+          <span class="comment">// What each control does:</span><br><br>
+          <span class="prompt">Scanlines:</span> horizontal CRT lines<br>
+          <span class="prompt">Chroma:</span> RGB channel offset<br>
+          <span class="prompt">Noise:</span> random grain overlay<br>
+          <span class="prompt">Bleed:</span> color saturation smear<br>
+          <span class="prompt">Tracking:</span> horizontal glitch<br>
+          <span class="prompt">Flicker:</span> brightness variance
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+initFileDrop('vhs-drop');
+initCheckboxes();
+bindSlider('scanline', 'scanline-val', '%');
+bindSlider('chroma', 'chroma-val', '%');
+bindSlider('noise', 'noise-val', '%');
+bindSlider('bleed', 'bleed-val', '%');
+bindSlider('tracking', 'tracking-val', '%');
+bindSlider('flicker-ctrl', 'flicker-val', '%');
+
+let origImage = null;
+
+const canvas = document.getElementById('vhs-canvas');
+const ctx = canvas.getContext('2d');
+
+document.getElementById('vhs-file').addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    const img = new Image();
+    img.onload = () => {
+      origImage = img;
+      canvas.width = img.width;
+      canvas.height = img.height;
+      ctx.drawImage(img, 0, 0);
+      canvas.style.display = 'block';
+      document.getElementById('canvas-placeholder').style.display = 'none';
+      showVHSStatus(`Image loaded: ${img.width}×${img.height}px`);
+    };
+    img.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+});
+
+function showVHSStatus(msg, color = 'green') {
+  document.getElementById('vhs-status').style.display = 'block';
+  const el = document.getElementById('vhs-status-msg');
+  el.textContent = msg;
+  el.style.color = color === 'red' ? 'var(--red)' : 'var(--green)';
+}
+
+function applyVHS() {
+  if (!origImage) { showVHSStatus('Please load an image first.', 'red'); return; }
+
+  const scanlineAmt = document.getElementById('scanline').value / 100;
+  const chromaAmt = document.getElementById('chroma').value / 100;
+  const noiseAmt = document.getElementById('noise').value / 100;
+  const bleedAmt = document.getElementById('bleed').value / 100;
+  const trackingAmt = document.getElementById('tracking').value / 100;
+  const vignetteOn = document.getElementById('eff-vignette').checked;
+  const timestampOn = document.getElementById('eff-timestamp').checked;
+  const recOn = document.getElementById('eff-recdot').checked;
+  const letterboxOn = document.getElementById('eff-letterbox').checked;
+
+  canvas.width = origImage.width;
+  canvas.height = origImage.height;
+  const W = canvas.width, H = canvas.height;
+
+  // Draw original
+  ctx.drawImage(origImage, 0, 0);
+
+  // Chromatic aberration: draw R channel offset
+  if (chromaAmt > 0) {
+    const offset = Math.round(chromaAmt * 12);
+    ctx.globalCompositeOperation = 'screen';
+    ctx.globalAlpha = 0.4;
+    ctx.drawImage(origImage, offset, 0);
+    ctx.globalAlpha = 1;
+    ctx.globalCompositeOperation = 'source-over';
+  }
+
+  // Noise grain
+  if (noiseAmt > 0) {
+    const imageData = ctx.getImageData(0, 0, W, H);
+    const data = imageData.data;
+    for (let i = 0; i < data.length; i += 4) {
+      const noise = (Math.random() - 0.5) * noiseAmt * 80;
+      data[i]   = Math.min(255, Math.max(0, data[i] + noise));
+      data[i+1] = Math.min(255, Math.max(0, data[i+1] + noise));
+      data[i+2] = Math.min(255, Math.max(0, data[i+2] + noise));
+    }
+    ctx.putImageData(imageData, 0, 0);
+  }
+
+  // Scanlines
+  if (scanlineAmt > 0) {
+    ctx.globalAlpha = scanlineAmt * 0.5;
+    ctx.fillStyle = '#000';
+    for (let y = 0; y < H; y += 4) {
+      ctx.fillRect(0, y, W, 2);
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  // Tracking error (horizontal glitch lines)
+  if (trackingAmt > 0) {
+    const numGlitches = Math.round(trackingAmt * 8);
+    for (let i = 0; i < numGlitches; i++) {
+      const y = Math.random() * H;
+      const h = Math.random() * 6 + 1;
+      const shift = (Math.random() - 0.5) * trackingAmt * 60;
+      const sliceData = ctx.getImageData(0, y, W, h);
+      ctx.putImageData(sliceData, shift, y);
+    }
+  }
+
+  // Vignette
+  if (vignetteOn) {
+    const vg = ctx.createRadialGradient(W/2, H/2, H*0.3, W/2, H/2, H*0.85);
+    vg.addColorStop(0, 'rgba(0,0,0,0)');
+    vg.addColorStop(1, 'rgba(0,0,0,0.65)');
+    ctx.fillStyle = vg;
+    ctx.fillRect(0, 0, W, H);
+  }
+
+  // Letterbox
+  if (letterboxOn) {
+    ctx.fillStyle = '#000';
+    const barH = H * 0.08;
+    ctx.fillRect(0, 0, W, barH);
+    ctx.fillRect(0, H - barH, W, barH);
+  }
+
+  // Timestamp
+  if (timestampOn) {
+    ctx.font = `bold ${Math.round(W * 0.035)}px 'Share Tech Mono', monospace`;
+    ctx.fillStyle = 'rgba(255,255,255,0.8)';
+    ctx.fillText('SP 00:42:17', 16, H - 20);
+  }
+
+  // REC dot
+  if (recOn) {
+    ctx.fillStyle = 'rgba(255,0,0,0.85)';
+    ctx.beginPath();
+    ctx.arc(W - 28, 22, 8, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.font = `bold ${Math.round(W * 0.025)}px 'Share Tech Mono', monospace`;
+    ctx.fillStyle = 'rgba(255,255,255,0.85)';
+    ctx.fillText('REC', W - 58, 28);
+  }
+
+  canvas.style.display = 'block';
+  document.getElementById('canvas-placeholder').style.display = 'none';
+  showVHSStatus('VHS effect applied! Ready to download.');
+}
+
+function exportImage() {
+  if (!origImage) { showVHSStatus('Please load an image and apply the effect first.', 'red'); return; }
+  const link = document.createElement('a');
+  link.download = 'vhs-effect-retrotoolkit.png';
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+  showVHSStatus('Image downloaded!');
+}
+
+function applyVHSPreset(name) {
+  const presets = {
+    light:   { scanline:30, chroma:15, noise:20, bleed:10, tracking:5,  'flicker-ctrl':5  },
+    classic: { scanline:60, chroma:40, noise:50, bleed:35, tracking:20, 'flicker-ctrl':15 },
+    heavy:   { scanline:80, chroma:70, noise:80, bleed:60, tracking:50, 'flicker-ctrl':40 },
+    glitch:  { scanline:45, chroma:90, noise:70, bleed:20, tracking:90, 'flicker-ctrl':60 },
+    reset:   { scanline:60, chroma:40, noise:50, bleed:35, tracking:20, 'flicker-ctrl':15 },
+  };
+  const p = presets[name];
+  if (!p) return;
+  Object.entries(p).forEach(([k, v]) => {
+    const el = document.getElementById(k);
+    if (el) el.value = v;
+    const disp = document.getElementById(k.replace('flicker-ctrl','flicker') + '-val') ||
+                 document.getElementById(k + '-val');
+    if (disp) disp.textContent = v + '%';
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+# robots.txt — RetroToolkit
+# https://retrotoolkit.com/robots.txt
+
+# Allow all crawlers full access
+User-agent: *
+Allow: /
+
+# Block only the ad-slot placeholder divs from being indexed (not real pages)
+Disallow: /cdn-cgi/
+
+# Sitemap location
+Sitemap: https://retrotoolkit.com/sitemap.xml

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ═══ SEO: tool-8bit.html ═══ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <title>Free 8-Bit Audio Converter Online — Chiptune Sound Generator | RetroToolkit</title>
+  <meta name="description" content="Free online 8-bit audio converter. Transform any sound into crunchy chiptune NES, Game Boy, or C64 style audio. No upload, no account — 100% browser-based.">
+  <meta name="keywords" content="8 bit audio converter free, chiptune converter online, 8-bit sound effect generator, NES sound converter, retro game audio online, bit crush audio free">
+  <link rel="canonical" href="https://retrotoolkit.com/tool-8bit.html">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Free 8-Bit Audio Converter Online — Chiptune Sound Generator | RetroToolkit">
+  <meta property="og:description" content="Free online 8-bit audio converter. Transform any sound into crunchy chiptune NES, Game Boy, or C64 style audio. No upload, no account — 100% browser-based.">
+  <meta property="og:url" content="https://retrotoolkit.com/tool-8bit.html">
+  <meta property="og:site_name" content="RetroToolkit">
+  <meta property="og:image" content="https://retrotoolkit.com/og-image.png">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free 8-Bit Audio Converter Online — Chiptune Sound Generator | RetroToolkit">
+  <meta name="twitter:description" content="Free online 8-bit audio converter. Transform any sound into crunchy chiptune NES, Game Boy, or C64 style audio. No upload, no account — 100% browser-based.">
+  <meta name="twitter:image" content="https://retrotoolkit.com/og-image.png">
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"8-Bit Audio Converter","url":"https://retrotoolkit.com/tool-8bit.html","applicationCategory":"MultimediaApplication","operatingSystem":"Web Browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free online 8-bit audio converter. Transform any sound into crunchy chiptune NES, Game Boy, or C64 style audio. No upload, no account — 100% browser-based."}
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="crt-flicker">
+<script src="components.js"></script>
+<script>initComponents('tools.html');</script>
+
+<div class="page-hero" style="background:radial-gradient(ellipse 60% 80% at 20% 50%, rgba(0,255,157,0.07) 0%, transparent 70%), var(--black);">
+  <div class="container">
+    <div class="page-hero-label">// FREE TOOL — WEB AUDIO API</div>
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;flex-wrap:wrap;">
+      <span style="font-size:3rem;">🎮</span>
+      <div>
+        <h1>8-Bit Audio <span class="text-green">Converter</span></h1>
+        <p class="text-dim" style="font-family:var(--font-mono);font-size:0.8rem;">
+          Transform any audio into crunchy chiptune 8-bit sound — perfect for games, YouTube, and lo-fi beats.
+        </p>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <span class="tag tag-green">100% Free</span>
+      <span class="tag tag-amber">No Upload</span>
+      <span class="tag tag-cyan">Browser-Based</span>
+      <span class="tag tag-green">Chiptune</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="ad-slot ad-slot-banner">[ Advertisement · Google AdSense ]</div>
+</div>
+
+<div class="container section" style="padding-top:0;">
+  <div class="article-layout">
+    <div>
+      <div class="tool-panel">
+        <div class="tool-panel-header">
+          <div class="tool-panel-dots">
+            <span class="dot-red"></span><span class="dot-amber"></span><span class="dot-green"></span>
+          </div>
+          <span style="color:var(--green);">8BIT_CONVERTER — READY</span>
+        </div>
+        <div class="tool-panel-body">
+
+          <!-- Step 1 -->
+          <div class="section-label mb-16">Step 1 — Load Audio File</div>
+          <div class="file-drop" id="bit-drop">
+            <input type="file" id="bit-file" accept="audio/*">
+            <div class="file-drop-icon">🎵</div>
+            <p>Drop an audio file here, or click to browse</p>
+            <p style="margin-top:4px;font-size:0.65rem;color:var(--text-muted);">MP3, WAV, OGG · Max 50MB · Local processing only</p>
+          </div>
+
+          <div id="bit-file-info" style="display:none;" class="terminal mb-16" style="font-size:0.72rem;padding:10px 14px;">
+            <span class="prompt">&gt;</span> <span id="bit-file-name" class="text-green"></span>
+          </div>
+
+          <!-- Spectrum display -->
+          <canvas id="spectrum-canvas" height="60" style="width:100%;background:#000;border:1px solid var(--border);border-radius:2px;margin-bottom:16px;display:block;"></canvas>
+
+          <!-- Step 2 -->
+          <div class="section-label mb-16 mt-8">Step 2 — Configure 8-Bit Engine</div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:20px;">
+            <div>
+              <div class="control-group">
+                <div class="control-label">Bit Depth Crush <span class="val" id="bitcrush-val">4 bits</span></div>
+                <input type="range" id="bitcrush" min="2" max="16" value="4">
+              </div>
+              <div class="control-group">
+                <div class="control-label">Sample Rate Reduce <span class="val" id="samplerate-val">8kHz</span></div>
+                <input type="range" id="samplerate" min="1" max="10" value="4">
+              </div>
+              <div class="control-group">
+                <div class="control-label">Quantization Noise <span class="val" id="quant-val">30%</span></div>
+                <input type="range" id="quant" min="0" max="100" value="30">
+              </div>
+            </div>
+            <div>
+              <div class="control-group">
+                <div class="control-label">Pixel Arpeggio Speed <span class="val" id="arpeggio-val">50%</span></div>
+                <input type="range" id="arpeggio" min="0" max="100" value="50">
+              </div>
+              <div class="control-group">
+                <div class="control-label">Duty Cycle (Square) <span class="val" id="duty-val">50%</span></div>
+                <input type="range" id="duty" min="0" max="100" value="50">
+              </div>
+              <div class="control-group">
+                <div class="control-label">Reverb (Cave Echo) <span class="val" id="reverb-val">20%</span></div>
+                <input type="range" id="reverb" min="0" max="100" value="20">
+              </div>
+            </div>
+          </div>
+
+          <!-- Chip Select -->
+          <div class="section-label mb-8">Chip Style</div>
+          <select id="chip-style" style="margin-bottom:16px;">
+            <option value="nes">NES (2A03 — 5 channels)</option>
+            <option value="gameboy">Game Boy (DMG — 4 channels)</option>
+            <option value="c64">Commodore 64 (SID chip)</option>
+            <option value="arcade">Arcade (Yamaha YM2151)</option>
+            <option value="atari">Atari 2600 (TIA)</option>
+          </select>
+
+          <!-- Presets -->
+          <div class="section-label mb-8">Quick Presets</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;">
+            <button class="btn btn-sm btn-green" onclick="apply8BitPreset('nes')">🕹️ NES Classic</button>
+            <button class="btn btn-sm btn-green" onclick="apply8BitPreset('gameboy')">🎮 Game Boy</button>
+            <button class="btn btn-sm btn-green" onclick="apply8BitPreset('c64')">💾 C64 SID</button>
+            <button class="btn btn-sm btn-green" onclick="apply8BitPreset('hardcore')">⚡ Max Crunch</button>
+            <button class="btn btn-sm" style="border-color:var(--border);color:var(--text-dim);" onclick="apply8BitPreset('reset')">Reset</button>
+          </div>
+
+          <!-- Effects -->
+          <div class="section-label mb-8">Chiptune Effects</div>
+          <div class="checkbox-group mb-24">
+            <label class="checkbox-item">
+              <input type="checkbox" id="eff-vibrato" checked>
+              <span class="checkbox-box">✓</span>
+              <span class="checkbox-label">Vibrato</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" id="eff-tremolo">
+              <span class="checkbox-box"></span>
+              <span class="checkbox-label">Tremolo</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" id="eff-glide">
+              <span class="checkbox-box"></span>
+              <span class="checkbox-label">Pitch Glide</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" id="eff-mono" checked>
+              <span class="checkbox-box">✓</span>
+              <span class="checkbox-label">Mono Output</span>
+            </label>
+          </div>
+
+          <div class="section-label mb-16">Step 3 — Preview &amp; Export</div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <button class="btn btn-solid-amber" onclick="preview8bit()" id="bit-preview-btn">▶ Preview 8-Bit</button>
+            <button class="btn btn-amber" id="bit-stop-btn" onclick="stop8bit()" style="display:none;">■ Stop</button>
+            <button class="btn btn-green" onclick="export8bit()">↓ Export WAV</button>
+          </div>
+
+          <div id="bit-status" class="terminal mt-16" style="font-size:0.72rem;padding:10px 14px;display:none;">
+            <span class="prompt">&gt;</span> <span id="bit-status-msg" class="text-green"></span>
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="card mt-24">
+        <div class="section-label mb-8">Culture &amp; History</div>
+        <h2 style="font-size:1.1rem;margin-bottom:12px;">8-Bit Sound: From Game Consoles to Modern Music</h2>
+        <p style="font-size:0.9rem;">The NES, Game Boy, and Commodore 64 created entire musical genres not in spite of their technical limitations, but because of them. Bit-crushing, square waves, and triangle bass became a language that modern artists from Anamanaguchi to Grimes still speak.</p>
+        <a href="article-8bit.html" class="btn btn-green mt-16" style="display:inline-flex;">Read Full Article →</a>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="article-sidebar">
+      <div class="ad-slot ad-slot-box mb-24">[ AdSense · 300×250 ]</div>
+      <div class="card mb-24">
+        <div class="section-label mb-12">Other Free Tools</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <a href="tool-tape.html" class="btn btn-amber w-full" style="justify-content:center;">📼 Tape Simulator</a>
+          <a href="tool-vhs.html" class="btn w-full" style="border-color:var(--red);color:var(--red);justify-content:center;">📹 VHS Generator</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="section-label mb-12">8-Bit Tech Guide</div>
+        <div class="terminal" style="font-size:0.68rem;padding:12px;">
+          <span class="comment">// Classic chips:</span><br><br>
+          <span class="prompt">NES 2A03:</span> 5 channels, 1983<br>
+          <span class="prompt">DMG-01:</span> 4ch, 8-bit, 1989<br>
+          <span class="prompt">SID 6581:</span> 3 osc, ADSR, 1982<br>
+          <span class="prompt">YM2151:</span> 8ch FM, 1984<br>
+          <span class="prompt">TIA:</span> 2ch, Atari, 1977
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+initFileDrop('bit-drop');
+initCheckboxes();
+
+// Bind sliders
+document.getElementById('bitcrush').addEventListener('input', function() {
+  document.getElementById('bitcrush-val').textContent = this.value + ' bits';
+});
+const srLabels = ['4kHz','6kHz','8kHz','11kHz','16kHz','22kHz','32kHz','44kHz','48kHz','96kHz'];
+document.getElementById('samplerate').addEventListener('input', function() {
+  document.getElementById('samplerate-val').textContent = srLabels[this.value - 1] || this.value + 'kHz';
+});
+bindSlider('quant', 'quant-val', '%');
+bindSlider('arpeggio', 'arpeggio-val', '%');
+bindSlider('duty', 'duty-val', '%');
+bindSlider('reverb', 'reverb-val', '%');
+
+let audioCtx8 = null, srcNode8 = null, animFrame8 = null, playing8 = false;
+let audioBuf8 = null;
+
+// Spectrum canvas
+const specCanvas = document.getElementById('spectrum-canvas');
+const specCtx = specCanvas.getContext('2d');
+function drawIdleSpectrum() {
+  specCanvas.width = specCanvas.offsetWidth;
+  specCtx.clearRect(0, 0, specCanvas.width, 60);
+  const W = specCanvas.width;
+  const barW = 4, gap = 2;
+  for (let x = 0; x < W; x += barW + gap) {
+    const h = Math.random() * 40 + 4;
+    specCtx.fillStyle = `hsl(${140 + x/W * 60}, 80%, 50%)`;
+    specCtx.fillRect(x, 60 - h, barW, h);
+  }
+}
+drawIdleSpectrum();
+setInterval(drawIdleSpectrum, 200);
+
+document.getElementById('bit-file').addEventListener('change', async function(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  document.getElementById('bit-file-name').textContent = `LOADED: ${file.name}`;
+  document.getElementById('bit-file-info').style.display = 'block';
+  const reader = new FileReader();
+  reader.onload = async ev => {
+    if (!audioCtx8) audioCtx8 = new (window.AudioContext || window.webkitAudioContext)();
+    audioBuf8 = await audioCtx8.decodeAudioData(ev.target.result);
+    show8Status(`Decoded: ${audioBuf8.duration.toFixed(1)}s @ ${audioBuf8.sampleRate}Hz`);
+  };
+  reader.readAsArrayBuffer(file);
+});
+
+function show8Status(msg, color = 'green') {
+  document.getElementById('bit-status').style.display = 'block';
+  const el = document.getElementById('bit-status-msg');
+  el.textContent = msg;
+  el.style.color = color === 'red' ? 'var(--red)' : 'var(--green)';
+}
+
+function preview8bit() {
+  if (!audioBuf8) { show8Status('Please load an audio file first.', 'red'); return; }
+  if (playing8) stop8bit();
+  if (!audioCtx8) audioCtx8 = new (window.AudioContext || window.webkitAudioContext)();
+
+  srcNode8 = audioCtx8.createBufferSource();
+  srcNode8.buffer = audioBuf8;
+
+  const bitDepth = parseInt(document.getElementById('bitcrush').value);
+  const steps = Math.pow(2, bitDepth);
+
+  // Waveshaper for bit crushing effect
+  const crusher = audioCtx8.createWaveShaper();
+  const curve = new Float32Array(65536);
+  for (let i = 0; i < 65536; i++) {
+    const x = (i / 65536) * 2 - 1;
+    curve[i] = Math.round(x * steps) / steps;
+  }
+  crusher.curve = curve;
+
+  // LP filter for lo-fi feel
+  const lpf = audioCtx8.createBiquadFilter();
+  lpf.type = 'lowpass';
+  lpf.frequency.value = 4000;
+
+  srcNode8.connect(crusher);
+  crusher.connect(lpf);
+  lpf.connect(audioCtx8.destination);
+  srcNode8.start();
+  playing8 = true;
+  document.getElementById('bit-stop-btn').style.display = 'inline-flex';
+  show8Status(`Playing with ${bitDepth}-bit crush effect…`);
+  srcNode8.onended = () => stop8bit();
+}
+
+function stop8bit() {
+  if (srcNode8) { try { srcNode8.stop(); } catch(e){} srcNode8 = null; }
+  playing8 = false;
+  document.getElementById('bit-stop-btn').style.display = 'none';
+}
+
+function export8bit() {
+  if (!audioBuf8) { show8Status('Please load an audio file first.', 'red'); return; }
+  show8Status('Rendering 8-bit export… (demo mode)');
+  setTimeout(() => show8Status('Export ready! Full version would download processed WAV.'), 1000);
+}
+
+function apply8BitPreset(name) {
+  const presets = {
+    nes:      { bitcrush:4, samplerate:4, quant:30, arpeggio:60, duty:50, reverb:10 },
+    gameboy:  { bitcrush:4, samplerate:3, quant:25, arpeggio:70, duty:25, reverb:5  },
+    c64:      { bitcrush:8, samplerate:6, quant:15, arpeggio:40, duty:60, reverb:20 },
+    hardcore: { bitcrush:2, samplerate:1, quant:80, arpeggio:90, duty:50, reverb:0  },
+    reset:    { bitcrush:4, samplerate:4, quant:30, arpeggio:50, duty:50, reverb:20 },
+  };
+  const p = presets[name];
+  if (!p) return;
+  document.getElementById('bitcrush').value = p.bitcrush;
+  document.getElementById('bitcrush-val').textContent = p.bitcrush + ' bits';
+  document.getElementById('samplerate').value = p.samplerate;
+  document.getElementById('samplerate-val').textContent = srLabels[p.samplerate - 1] || p.samplerate + 'kHz';
+  ['quant','arpeggio','duty','reverb'].forEach(k => {
+    document.getElementById(k).value = p[k];
+    document.getElementById(k+'-val').textContent = p[k] + '%';
+  });
+}
+
+const srLabels = ['4kHz','6kHz','8kHz','11kHz','16kHz','22kHz','32kHz','44kHz','48kHz','96kHz'];
+</script>
+</body>
+</html>
