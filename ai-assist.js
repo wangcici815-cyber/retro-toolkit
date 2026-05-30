@@ -1,12 +1,12 @@
-/* ai-assist.js — AI-powered parameter assistant via Cloudflare Worker
-   The DeepSeek API key lives in the Worker environment, never in the browser.
-   Replace WORKER_URL below with your deployed Cloudflare Worker address. */
+/* ai-assist.js — AI-powered parameter assistant via Cloudflare Pages Function
+   The DeepSeek API key lives in Pages Secrets, never in the browser.
+   Set DEEPSEEK_API_KEY in Pages Dashboard → Settings → Environment Variables. */
   (function() {
     'use strict';
 
-    /* ── CONFIG ── 替换成你的 Cloudflare Worker 地址 */
-    const WORKER_URL = 'https://YOUR_WORKER.workers.dev';
-    /* ──────────────────────────────────────────── */
+    /* ── CONFIG ── Pages Function 路由（和站点同域名，无需完整 URL） */
+    const WORKER_URL = '/api/chat';
+    /* ─────────────────────────────────────────────────────────────── */
 
     const MODEL = 'deepseek-v4-flash';
 
@@ -109,11 +109,6 @@
     /* ── API call ── */
 
     async function callDeepSeek(userText, config, showStatus, applyBtn) {
-      if (!WORKER_URL || WORKER_URL.indexOf('YOUR_WORKER') !== -1) {
-        showStatus('AI Assist not configured. Please set WORKER_URL in ai-assist.js.', 'red');
-        return;
-      }
-
       showStatus('Asking AI...', 'amber');
       applyBtn.disabled = true;
       applyBtn.textContent = '...';
