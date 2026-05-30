@@ -1,14 +1,14 @@
-/* ai-assist.js — AI-powered parameter assistant using DeepSeek API
-   Edit DEEPSEEK_API_KEY below with your own key before deploying. */
+/* ai-assist.js — AI-powered parameter assistant via Cloudflare Worker
+   The DeepSeek API key lives in the Worker environment, never in the browser.
+   Replace WORKER_URL below with your deployed Cloudflare Worker address. */
   (function() {
     'use strict';
 
-    /* ── CONFIG ── 把下面引号里的 Key 换成你的 DeepSeek API Key */
-    const DEEPSEEK_API_KEY = 'sk-bd590a79943849ecada0ce9eec04d18b';
-    /* ───────────────────────────────── */
+    /* ── CONFIG ── 替换成你的 Cloudflare Worker 地址 */
+    const WORKER_URL = 'https://YOUR_WORKER.workers.dev';
+    /* ──────────────────────────────────────────── */
 
-    const API_URL = 'https://api.deepseek.com/v1/chat/completions';
-    const MODEL = 'deepseek-chat';
+    const MODEL = 'deepseek-v4-flash';
 
     window.initAIAssist = function(config) {
       const root = document.getElementById(config.containerId);
@@ -109,8 +109,8 @@
     /* ── API call ── */
 
     async function callDeepSeek(userText, config, showStatus, applyBtn) {
-      if (!DEEPSEEK_API_KEY || DEEPSEEK_API_KEY.indexOf('__SET_KEY__') !== -1) {
-        showStatus('AI Assist not configured. Please set DEEPSEEK_API_KEY in ai-assist.js.', 'red');
+      if (!WORKER_URL || WORKER_URL.indexOf('YOUR_WORKER') !== -1) {
+        showStatus('AI Assist not configured. Please set WORKER_URL in ai-assist.js.', 'red');
         return;
       }
 
@@ -121,11 +121,10 @@
       try {
         var systemPrompt = buildSystemPrompt(config);
 
-        var response = await fetch(API_URL, {
+        var response = await fetch(WORKER_URL, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + DEEPSEEK_API_KEY
+            'Content-Type': 'application/json'
           },
           body: JSON.stringify({
             model: MODEL,
