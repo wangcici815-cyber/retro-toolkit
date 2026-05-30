@@ -49,6 +49,18 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://retroaudioworld.com/article-8bit-sfx</loc>
+    <lastmod>2026-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://retroaudioworld.com/article-vhs-thumbnails</loc>
+    <lastmod>2026-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://retroaudioworld.com/tool-8bit.</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>

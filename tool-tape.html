@@ -26,6 +26,7 @@
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Tape Noise Simulator","url":"https://retroaudioworld.com/tool-tape.html","applicationCategory":"MultimediaApplication","operatingSystem":"Web Browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free online tape noise simulator. Add authentic cassette tape hiss, wow & flutter, radio distortion, and warmth to any audio. Runs in your browser — no upload needed."}
 </script>
 <link rel="stylesheet" href="style.css">
+<script src="ai-assist.js"></script>
 </head>
 <body class="crt-flicker">
 <script src="components.js"></script>
@@ -174,6 +175,9 @@
       </div>
 
       <hr class="divider">
+
+      <!-- AI Assist Panel -->
+      <div class="card mt-24" id="ai-assist-root"></div>
 
       <!-- Related Article Excerpt -->
       <div class="card mt-24">
@@ -345,6 +349,59 @@ function exportAudio() {
   showStatus('Rendering export… (demo: saves original file)', 'green');
   setTimeout(() => showStatus('Export complete! In full version, processed WAV would download.'), 1000);
 }
+
+// ═══ AI Assist Init ═══
+initAIAssist({
+  containerId: "ai-assist-root",
+  toolLabel: "a tape noise simulator",
+  placeholder: "e.g. worn-out cassette from a 1989 boombox",
+  paramGroups: [{
+    label: "Main",
+    params: [
+      { id: "hiss", label: "Tape hiss level", min: 0, max: 100 },
+      { id: "wow", label: "Slow pitch drift", min: 0, max: 100 },
+      { id: "flutter", label: "Fast speed variance", min: 0, max: 100 },
+      { id: "radio", label: "Radio/lo-fi distortion", min: 0, max: 100 },
+      { id: "warmth", label: "High-frequency rolloff (warmth)", min: 0, max: 100 },
+      { id: "mix", label: "Wet/dry blend", min: 0, max: 100 }
+    ]
+  }],
+  effects: [
+    { id: "crackle", label: "Vinyl crackle" },
+    { id: "dropout", label: "Tape dropout" },
+    { id: "stereo", label: "Stereo spread" },
+    { id: "saturation", label: "Tape saturation" }
+  ],
+  suggestions: [
+    "warm lo-fi beat with subtle tape character",
+    "broken radio from the 70s",
+    "worn out mixtape played 100 times",
+    "bright and clean, just a touch of warmth"
+  ],
+  examples: [
+    { input: "warm lo-fi beat with subtle tape character", output: { hiss:25, wow:30, flutter:20, radio:10, warmth:75, mix:60, crackle:false, dropout:false, stereo:true, saturation:true, explanation: "Subtle warmth and saturation for a smooth lo-fi feel." } },
+    { input: "broken radio from the 70s", output: { hiss:60, wow:40, flutter:30, radio:85, warmth:25, mix:90, crackle:true, dropout:true, stereo:false, saturation:false, explanation: "Heavy band-limiting with radio distortion and tape artifacts." } },
+    { input: "worn out mixtape played 100 times", output: { hiss:70, wow:65, flutter:55, radio:40, warmth:40, mix:90, crackle:true, dropout:true, stereo:true, saturation:true, explanation: "Heavily degraded tape with prominent wow, hiss, and dropouts." } }
+  ],
+  onApply: function(params) {
+    var sliderMap = { hiss:"hiss", wow:"wow", flutter:"flutter", radio:"radio", warmth:"warmth", mix:"mix" };
+    Object.keys(sliderMap).forEach(function(key) {
+      if (params[key] !== undefined) {
+        var val = Math.max(0, Math.min(100, Math.round(params[key])));
+        document.getElementById(sliderMap[key]).value = val;
+        document.getElementById(sliderMap[key] + "-val").textContent = val + "%";
+      }
+    });
+    var effectMap = { crackle:"eff-crackle", dropout:"eff-dropout", stereo:"eff-stereo", saturation:"eff-saturation" };
+    Object.keys(effectMap).forEach(function(key) {
+      if (params[key] !== undefined) {
+        var cb = document.getElementById(effectMap[key]);
+        if (cb) cb.checked = !!params[key];
+      }
+    });
+    if (window.initCheckboxes) initCheckboxes();
+  }
+});
 
 function applyPreset(name) {
   const presets = {
