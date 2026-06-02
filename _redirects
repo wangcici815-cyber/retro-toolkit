@@ -1,0 +1,2 @@
+# www → non-www 301 redirect
+www.retroaudioworld.com/* https://retroaudioworld.com/:splat 301
