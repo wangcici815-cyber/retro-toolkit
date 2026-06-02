@@ -1,2 +1,6 @@
 # www → non-www 301 redirect
 www.retroaudioworld.com/* https://retroaudioworld.com/:splat 301
+
+# Broken trailing-dot URLs from old sitemap
+/article-vhs. /article-vhs 301
+/tool-8bit. /tool-8bit 301
