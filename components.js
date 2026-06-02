@@ -3,11 +3,11 @@
 const SITE_NAME = 'RETRO<span class="text-amber">TOOLKIT</span>';
 
 const NAV_LINKS = [
-  { href: 'index.html',     label: 'Home',   },
-  { href: 'tools.html',     label: 'Tools',  badge: 'FREE' },
-  { href: 'blog.html',      label: 'Blog',   },
-  { href: 'guides.html',    label: 'Guides', },
-  { href: 'about.html',     label: 'About',  },
+  { href: '/',     label: 'Home',   },
+  { href: '/tools',     label: 'Tools',  badge: 'FREE' },
+  { href: '/blog',      label: 'Blog',   },
+  { href: '/guides',    label: 'Guides', },
+  { href: '/about',     label: 'About',  },
 ];
 
 function buildHeader(activePage) {
@@ -20,7 +20,7 @@ function buildHeader(activePage) {
   return `
 <header class="site-header">
   <div class="container nav-inner">
-    <a href="index.html" class="nav-logo">
+    <a href="/" class="nav-logo">
       <span class="logo-icon">📼</span>
       ${SITE_NAME}
     </a>
@@ -50,17 +50,17 @@ function buildFooter() {
       <div class="footer-col">
         <h4>Tools</h4>
         <ul>
-          <li><a href="tool-tape.html">Tape Noise Simulator</a></li>
-          <li><a href="tool-8bit.html">8-Bit Audio Converter</a></li>
-          <li><a href="tool-vhs.html">VHS Effect Generator</a></li>
+          <li><a href="/tool-tape">Tape Noise Simulator</a></li>
+          <li><a href="/tool-8bit">8-Bit Audio Converter</a></li>
+          <li><a href="/tool-vhs">VHS Effect Generator</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Explore</h4>
         <ul>
-          <li><a href="blog.html">Retro Culture Blog</a></li>
-          <li><a href="guides.html">Beginner's Guides</a></li>
-          <li><a href="about.html">About This Site</a></li>
+          <li><a href="/blog">Retro Culture Blog</a></li>
+          <li><a href="/guides">Beginner's Guides</a></li>
+          <li><a href="/about">About This Site</a></li>
         </ul>
       </div>
     </div>
