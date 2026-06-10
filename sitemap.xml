@@ -2,79 +2,103 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://retroaudioworld.com/</loc>
-    <lastmod>2026-05-10</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://retroaudioworld.com/about</loc>
-    <lastmod>2026-05-10</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://retroaudioworld.com/blog</loc>
-    <lastmod>2026-05-10</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://retroaudioworld.com/guides</loc>
-    <lastmod>2026-05-10</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://retroaudioworld.com/tools</loc>
-    <lastmod>2026-05-10</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://retroaudioworld.com/article-synthwave</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://retroaudioworld.com/article-lofi-hiphop</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://retroaudioworld.com/article-8bit</loc>
-    <lastmod>2026-05-10</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://retroaudioworld.com/article-tape</loc>
-    <lastmod>2026-05-10</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://retroaudioworld.com/article-vhs</loc>
-    <lastmod>2026-05-10</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://retroaudioworld.com/article-8bit-sfx</loc>
-    <lastmod>2026-05-26</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://retroaudioworld.com/article-vhs-thumbnails</loc>
-    <lastmod>2026-05-26</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://retroaudioworld.com/tool-8bit</loc>
-    <lastmod>2026-05-10</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://retroaudioworld.com/tool-tape</loc>
-    <lastmod>2026-05-10</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://retroaudioworld.com/tool-vhs</loc>
-    <lastmod>2026-05-10</lastmod>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://retroaudioworld.com/article-vintage-audio-guide</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://retroaudioworld.com/article-vhs-howto</loc>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
